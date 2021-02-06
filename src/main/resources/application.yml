@@ -1,0 +1,36 @@
+server:
+  port: 8887
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?nullCatalogMeansCurrent=true&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysql
+  thymeleaf:
+    enabled: true  #开启thymeleaf视图解析
+    encoding: utf-8  #编码
+    prefix: classpath:/templates/  #前缀
+    cache: false  #是否使用缓存
+    mode: HTML  #严格的HTML语法模式
+    suffix: .html  #后缀名
+
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+  configLocation: classpath:mybatis.xml
+logging:
+  config: classpath:logback-admin.xml
+log:
+  level:
+    root: info
+    my: debug
+  file: logs/admin-server.log
+  maxsize: 30MB
+cas:
+#  server-url-prefix: http://cas.glodon.com/
+  server-url-prefix: http://home.glodon.com:7777/gam/cas
+  server-login-url:  http://home.glodon.com:7777/gam/cas/login
+  client-host-url: http://127.0.0.1:8887
+  validation-type: cas3
+  redirect-after-validation: true
+
+#server.servlet.session.tracking-modes=cookie
